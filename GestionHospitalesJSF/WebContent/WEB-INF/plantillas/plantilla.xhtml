@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+<f:loadBundle basename="resources.application" var="msg"></f:loadBundle>
+<h:head>
+	<title><ui:insert name="title">Default title</ui:insert></title>
+	<link rel="shortcut icon" type="image/x-icon" href="#{resource['imagenes/azarquiel.ico']}"/>
+	<h:outputStylesheet library="css" name="estilo.css" ></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="SpryMenuBarHorizontal.css"></h:outputStylesheet>
+    <h:outputScript library="js" name="SpryMenuBar.js"></h:outputScript>
+    <h:outputScript library="js" name="marcartodos.js"></h:outputScript>
+    <!-- Bootstrap core CSS -->
+	<h:outputScript library="js" name="bootstrap.js" ></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+</h:head>
+
+<h:body>
+	<!-- Container -->
+	<div class="container-fluid row">
+	<!-- Parte Izquierda -->
+	<div class="col-sm-10">
+		<ui:insert name="metadata"/>
+		<!-- Cabecera -->
+		<div class="col-sm-11 heade">
+			<div id="logo" class="row">
+				<h:graphicImage class="logo_ministerio"  value="#{resource['imagenes:logo_ministerio2.png']}"/>
+				<h:graphicImage class="logo_ministerio2"  value="#{resource['imagenes:logo_ministerio.png']}"/>
+			</div>
+			<div id="menu">
+				<ui:insert name="menu">
+					<ui:include src="/WEB-INF/includes/menu.xhtml"/>
+				</ui:insert>
+			</div>
+		</div>
+		<!-- Fin Cabecera -->
+		<!-- Menu -->
+		<div>
+		
+		</div>
+		<!-- Fin Menu -->
+		
+		
+		<div class="col-sm-11">
+		
+		</div>
+		<div class="col-sm-11">
+		
+		</div>
+	
+	
+	</div>
+	<!-- Fin Parte Izquierda -->
+	<!-- Parte Derecha-->
+	<div class="col-sm-2">
+		
+	
+	</div>
+	<!-- Fin Parte Derecha -->
+	
+	
+	
+		
+		
+
+	<div id="contenido">
+		<ui:insert name="contenido">
+    	
+    	<!--  include your content file or uncomment the include below and create content.xhtml in this directory -->
+			<!-- <div> -->
+			<!-- <ui:include src="content.xhtml"/> -->
+			<!-- </div> -->
+		</ui:insert>
+	</div>
+
+	<div id="footer">
+		<ui:insert name="footer">
+         
+		</ui:insert>
+	</div>
+	</div>
+   <!--Fin Container --> 
+	
+</h:body>
+</f:view>
+
+</html>
