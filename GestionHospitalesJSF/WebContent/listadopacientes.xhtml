@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
+<ui:define name="title">Listado de Pacientes</ui:define>
+	<ui:define name="contenido">
+		<h:messages id="messages" globalOnly="true" layout="table"
+			errorClass="advertencia" infoClass="info">
+		</h:messages>
+		<h:panelGroup id="panelTab" styleClass="panelTabla"
+			rendered="#{backingListadoAutor.paginacion.itemsCount>0}" layout="block">
+			<h:form id="frmlistadoautorespaginado" prependId="false">
+				
+				<div class="navegacionTabla">
+					<h:outputText
+						value="Mostrando #{backingListadoAutor.paginacion.primerElementoPagina}..#{backingListadoAutor.paginacion.ultimoElementoPagina} de #{backingListadoAutor.paginacion.itemsCount}" />
+					
+					<h:commandLink id="anterior" value="Anterior"
+						rendered="#{backingListadoAutor.paginacion.hayPaginaAnterior}">
+						<f:ajax execute="@form" render="@form"
+							listener="#{backingListadoAutor.paginaAnterior}" />
+					</h:commandLink>
+					
+					<h:commandLink id="siguiente" value="Siguiente"
+						rendered="#{backingListadoAutor.paginacion.hayPaginaSiguiente}">
+						<f:ajax execute="@form" render="@form"
+							listener="#{backingListadoAutor.paginaSiguiente}" />
+					</h:commandLink>
+					
+					<h:selectOneMenu id="slctpaginacion"
+						value="#{backingListadoAutor.slctnrpag}">
+						<f:selectItem itemLabel="5" itemValue="5" />
+						<f:selectItem itemLabel="10" itemValue="10" />
+						<f:selectItem itemLabel="15" itemValue="15" />
+						<f:selectItem itemLabel="20" itemValue="20" />
+						<f:ajax listener="#{backingListadoAutor.resetPaginacion}" render="@form" />
+					</h:selectOneMenu>
+				</div>
+				<h:dataTable styleClass="tabla" id="tablaautores" var="autor"
+					rendered="#{not empty backingListadoAutor.listadoAutores}"
+					value="#{backingListadoAutor.listadoAutores}" border="1"
+					headerClass="list-header" rowClasses="filaimpar,filapar"
+					columnClasses="just-derecha,just-izquierda,just-izquierda,just-centro">
+					<f:facet name="header">
+						<h:outputText value="Listado de Autores"></h:outputText>
+					</f:facet>
+					<h:column id="IdAutor">
+						<f:facet name="header">
+							<h:outputText value="IdAutor">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{autor.idautor}"></h:outputText>
+					</h:column>
+					<h:column id="Nombre">
+						<f:facet name="header">
+							<h:outputText value="Nombre">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{autor.nombre}">
+						</h:outputText>
+					</h:column>
+					<h:column id="Fecha">
+						<f:facet name="header">
+							<h:outputText value="Fecha">
+							</h:outputText>
+						</f:facet>
+						<h:outputText value="#{autor.fechanacimiento}">
+						</h:outputText>
+					</h:column>
+					<h:column id="Eliminar" headerClass="list-header">
+						<f:facet name="header">
+							<h:outputText value="Eliminar"></h:outputText>
+						</f:facet>
+						<h:commandLink value="Eliminar">
+							<f:ajax render="panelTab @form"
+							listener="#{backingListadoAutor.autoraborrar(autor)}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+				<div>
+					<h:outputText id="pagactual"
+						value="Pagina:#{backingListadoAutor.paginacion.pagina}" />
+					<h:outputText value="&nbsp;"></h:outputText>
+					<h:outputText id="regpag"
+						value="Registros por pagina: #{backingListadoAutor.paginacion.nrpag}" />
+				</div>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+</html>
