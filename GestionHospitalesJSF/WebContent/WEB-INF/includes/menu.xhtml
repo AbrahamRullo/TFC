@@ -6,57 +6,76 @@
    <ui:composition>
    <h:form id="frmmenu">
       <ul id="MenuBar1" class="MenuBarHorizontal">
-         <li><a class="MenuBarItemSubmenu" href="#">Socios</a>
-            <ul>
-               <li><a href="#">Nuevo Socio</a></li>
-
+         <li>
+         	<h:commandLink
+                     action="/hacerprueba.xhtml?faces-redirect=true"
+                     value="Prueba"
+                     class="MenuBarItemSubmenu">
+            </h:commandLink>
+         </li>
+         <li><a href="#" class="MenuBarItemSubmenu">Paciente</a>
+         <ul>
+                <li><h:commandLink 
+                	 action="listadopacientes.xhtml?faces-redirect=true"
+                     value="Listado Pacientes"></h:commandLink></li>
+                     
+               <li><h:commandLink 
+               		 action="/pacientespositivos.xhtml"
+                     value="Pacientes Positivos"></h:commandLink></li>
+                     
                <li><h:commandLink
-                     action="/admin/listadosociospaginado.xhtml?faces-redirect=true"
-                     value="Listado de Socios"></h:commandLink></li>
-               <li><h:commandLink value="Modificar Socio"
-                     action="/admin/getsocio.xhtml?faces-redirect=true"></h:commandLink></li>
-               <li><a href="#">Eliminar Socio</a></li>
-               <li><h:commandLink
-                     action="/admin/listadosociosmorosos.xhtml?faces-redirect=true"
-                     value="Listado de Socios Morosos"></h:commandLink></li>
-            </ul></li>
-         <li><a href="#" class="MenuBarItemSubmenu">Autores</a>
-            <ul>
-                <li><h:commandLink action="/admin/listadoautores.xhtml?faces-redirect=true"
-                     value="Listado Autores"></h:commandLink></li>
-               <li><h:commandLink action="/admin/altaautor.xhtml"
-                     value="Nuevo Autor"></h:commandLink></li>
-               <li><h:commandLink
-                     action="/admin/borrarautor.xhtml?faces-redirect=true"
-                     value="Eliminar Autor"></h:commandLink></li>
-            </ul></li>
-         <li><a href="#" class="MenuBarItemSubmenu">Ejemplares</a>
-            <ul>
-               <li><h:commandLink
-                     action="/admin/borrarejemplar.xhtml?faces-redirect=true"
-                     value="Borrar Ejemplar"></h:commandLink></li>
+                     action="/pacientesnegativos.xhtml?faces-redirect=true"
+                     value="Pacientes Negativos"></h:commandLink></li>
             </ul>
          </li>
-         <li><a href="#" class="MenuBarItemSubmenu">Libros</a>
-            <ul>
+         <li><a href="#" class="MenuBarItemSubmenu">Ingresos</a>
+         <ul>
+                <li><h:commandLink 
+                	 action="listadopacientes.xhtml?faces-redirect=true"
+                     value="Listado Ingresados"></h:commandLink></li>
+              <!--      
+               <li><h:commandLink 
+               		 action="/pacientespositivos.xhtml"
+                     value="Pacientes Positivos"></h:commandLink></li>
+                     
                <li><h:commandLink
-                     action="/admin/rrarejemplar.xhtml?faces-redirect=true"
-                     value="Consulta"></h:commandLink></li>
-               <li><h:commandLink
-                     action="/admin/altalibro.xhtml?faces-redirect=true"
-                     value="Alta"></h:commandLink></li>                
+                     action="/pacientesnegativos.xhtml?faces-redirect=true"
+                     value="Pacientes Negativos"></h:commandLink></li>
+               -->   
             </ul>
-        </li>
-         <li><a class="MenuBarItemSubmenu" href="#">Prestamos</a>
-            <ul>
+         </li>
+         <li><a href="#" class="MenuBarItemSubmenu">Altas</a>
+         <ul>
+                <li><h:commandLink 
+                	 action="listadopacientes.xhtml?faces-redirect=true"
+                     value="Listado Altas"></h:commandLink></li>
+               <!--      
+               <li><h:commandLink 
+               		 action="/pacientespositivos.xhtml"
+                     value="Pacientes Positivos"></h:commandLink></li>
+                     
                <li><h:commandLink
-                     action="/admin/nuevoprestamo.xhtml?faces-redirect=true"
-                     value="Nuevo Prestamo"></h:commandLink></li>
+                     action="/pacientesnegativos.xhtml?faces-redirect=true"
+                     value="Pacientes Negativos"></h:commandLink></li>
+               -->
+            </ul>
+         </li>
+         <li><a href="#" class="MenuBarItemSubmenu">Defunciones</a>
+         <ul>
+                <li><h:commandLink 
+                	 action="listadopacientes.xhtml?faces-redirect=true"
+                     value="Listado Defunciones"></h:commandLink></li>
+               <!--      
+               <li><h:commandLink 
+               		 action="/pacientespositivos.xhtml"
+                     value="Pacientes Positivos"></h:commandLink></li>
+                     
                <li><h:commandLink
-                     action="/admin/devolverprestamo.xhtml?faces-redirect=true"
-                     value="Devolucion"></h:commandLink></li>
-               <li><a href="#">Logout</a></li>
-            </ul></li>
+                     action="/pacientesnegativos.xhtml?faces-redirect=true"
+                     value="Pacientes Negativos"></h:commandLink></li>
+               -->
+            </ul>
+         </li>
       </ul>
    </h:form>
 

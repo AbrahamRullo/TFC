@@ -22,7 +22,7 @@ public class Defuncion implements Serializable {
 
 	//bi-directional one-to-one association to Ingreso
 	@OneToOne
-	@JoinColumn(name="PACIENTE")
+	@JoinColumn(name="PACIENTE",insertable=false, updatable=false)
 	private Ingreso ingreso;
 
 	public Defuncion() {

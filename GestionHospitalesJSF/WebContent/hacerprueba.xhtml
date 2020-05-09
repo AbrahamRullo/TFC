@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
+<ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
+
+	<ui:define name="title">Nuevo autor</ui:define>
+	<ui:define name="contenido">
+		<div id="altaAutor" class="formulariogeneral">
+			<h:outputText value="&nbsp;"></h:outputText>
+
+			<h:form id="frmAltaUsuario" prependId="false">
+				<h:messages globalOnly="true" layout="table" infoClass="final"></h:messages>
+				<fieldset>
+					<legend>Nuevo Paciente</legend>
+					<h:panelGrid title="Datos del Autor" columns="3" border="0">
+					
+						<label>DNI</label>
+						<h:inputText id="dnipaciente"
+							value="#{backingCrearPrueba.paciente.dni}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="dnipaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Nombre Completo</label>
+						<h:inputText id="nombrepaciente"
+							value="#{backingCrearPrueba.paciente.nombre}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="nombrepaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Edad</label>
+						<h:inputText id="edadpaciente"
+							value="#{backingCrearPrueba.paciente.edad}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="edadpaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Telefono</label>
+						<h:inputText id="telefonopaciente"
+							value="#{backingCrearPrueba.paciente.telefono}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="telefonopaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Telefono2</label>
+						<h:inputText id="telefono2paciente"
+							value="#{backingCrearPrueba.paciente.telefono2}"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="telefono2paciente" errorClass="advertencia" ></h:message>
+						
+						<label>Localidad</label>
+						<h:inputText id="localidadpaciente"
+							value="#{backingCrearPrueba.paciente.localidad}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="localidadpaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Provincia</label>
+						<h:inputText id="provinciapaciente"
+							value="#{backingCrearPrueba.paciente.provincia}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="provinciapaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Comunidad Autonoma</label>
+						<h:inputText id="comunidadpaciente"
+							value="#{backingCrearPrueba.paciente.comunidadAutonoma}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="comunidadpaciente" errorClass="advertencia" ></h:message>
+						
+						<label>Patologias Previa (Si o No)</label>
+						<h:inputText id="patologiapaciente"
+							value="#{backingCrearPrueba.paciente.patalogiaPrevia}" required="true"
+							requiredMessage="Campo obligatorio" />
+						<h:message for="patologiapaciente" errorClass="advertencia" ></h:message>
+						
+						<h:outputText value=""></h:outputText>
+						<h:commandButton action="#{backingCrearPrueba.nuevoPaciente()}"
+							value="#{msg['generico.botonguardar']}">
+						</h:commandButton>
+					</h:panelGrid>
+				</fieldset>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

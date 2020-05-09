@@ -33,7 +33,7 @@ public class Ingreso implements Serializable {
 
 	//bi-directional one-to-one association to Pcr
 	@OneToOne
-	@JoinColumn(name="PACIENTE")
+	@JoinColumn(name="PACIENTE",insertable=false, updatable=false)
 	private Pcr pcr;
 
 	public Ingreso() {

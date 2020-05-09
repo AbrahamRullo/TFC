@@ -21,7 +21,7 @@ public class Pcr implements Serializable {
 
 	//bi-directional one-to-one association to Paciente
 	@OneToOne
-	@JoinColumn(name="PACIENTE")
+	@JoinColumn(name="PACIENTE",insertable=false, updatable=false)
 	private Paciente pacienteBean;
 
 	public Pcr() {
