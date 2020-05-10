@@ -9,7 +9,7 @@
 	
 <ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
 
-	<ui:define name="title">Resultado Prueba PCR</ui:define>
+	<ui:define name="title">Nuevo autor</ui:define>
 	<ui:define name="contenido">
 		<div id="altaAutor" class="formulariogeneral">
 			<h:outputText value="&nbsp;"></h:outputText>
@@ -22,7 +22,7 @@
 					
 						<label>DNI</label>
 						<h:inputText id="dnipaciente"
-							value="#{backingCrearPrueba.dni}" required="true"
+							value="#{backingCrearPrueba.paciente.dni}" required="true"
 							requiredMessage="Campo obligatorio" />
 						<h:message for="dnipaciente" errorClass="advertencia" ></h:message>
 						
@@ -73,24 +73,6 @@
 							value="#{backingCrearPrueba.paciente.patalogiaPrevia}" required="true"
 							requiredMessage="Campo obligatorio" />
 						<h:message for="patologiapaciente" errorClass="advertencia" ></h:message>
-						
-						<label>Positivo (Si o no)</label>
-						<h:inputText id="resultadopcr"
-							value="#{backingCrearPrueba.pcr.positivo}" required="true"
-							requiredMessage="Campo obligatorio" />
-						<h:message for="resultadopcr" errorClass="advertencia" ></h:message>
-						
-						<label>Necesita Ingreso (Si o No)</label>
-						<h:inputText id="ingreso"
-							value="#{backingCrearPrueba.pIngreso}" required="true"
-							requiredMessage="Campo obligatorio" />
-						<h:message for="ingreso" errorClass="advertencia" ></h:message>
-						
-						<label>Estado</label>
-						<h:inputText id="estadoingreso"
-							value="#{backingCrearPrueba.ingreso.estado}" required="true"
-							requiredMessage="Campo obligatorio" />
-						<h:message for="estadoingreso" errorClass="advertencia" ></h:message>
 						
 						<h:outputText value=""></h:outputText>
 						<h:commandButton action="#{backingCrearPrueba.nuevoPaciente()}"
