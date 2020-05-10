@@ -9,7 +9,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import entidades.Ingreso;
 import entidades.Paciente;
+import entidades.Pcr;
 import servicios.PacienteService;
 
 
@@ -23,6 +25,10 @@ public class BackingCrearPrueba implements Serializable {
 	@EJB
 	private PacienteService pacienteservice;
 	Paciente paciente = new Paciente();
+	Pcr pcr = new Pcr();
+	Ingreso ingreso = new Ingreso();
+	String dni ="";
+	String pIngreso ="";
 	
 	public BackingCrearPrueba() {
 		// TODO Auto-generated constructor stub
@@ -35,13 +41,52 @@ public class BackingCrearPrueba implements Serializable {
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
+	
+	public Pcr getPcr() {
+		return pcr;
+	}
 
+	public void setPcr(Pcr pcr) {
+		this.pcr = pcr;
+	}
+	
+	public Ingreso getIngreso() {
+		return ingreso;
+	}
 
+	public void setIngreso(Ingreso ingreso) {
+		this.ingreso = ingreso;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getpIngreso() {
+		return pIngreso;
+	}
+
+	public void setpIngreso(String pIngreso) {
+		this.pIngreso = pIngreso;
+	}
 
 	public void nuevoPaciente() {
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
 		try {
+			paciente.setDni(dni);
 			pacienteservice.crearPaciente(paciente);
+			pcr.setPaciente(dni);
+			pacienteservice.crearPcr(pcr);
+			
+			//if(pIngreso == "SI" || pIngreso == "si" || pIngreso == "Si" || pIngreso == "sI") {
+				ingreso.setPaciente(dni);
+				pacienteservice.crearIngreso(ingreso);
+	    	//}
+			
+			
 			FacesContext context = FacesContext.getCurrentInstance();
 			ResourceBundle archivomensajes = ResourceBundle.getBundle("resources.application",
 					context.getViewRoot().getLocale());
