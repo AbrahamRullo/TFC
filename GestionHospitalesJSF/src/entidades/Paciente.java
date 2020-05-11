@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @NamedQuery(name="Paciente.findAll", query="SELECT p FROM Paciente p")
+@NamedQuery (name="Paciente.pacientesPorNombre",query="select p from Paciente p where UPPER(p.nombre) LIKE UPPER(:nombrepaciente)")
 public class Paciente implements Serializable {
 	private static final long serialVersionUID = 1L;
 

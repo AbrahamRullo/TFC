@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/WEB-INF/plantillas/plantilla.xhtml">
+	<ui:define name="title">Buscar Paciente</ui:define>
+	<ui:define name="contenido">
+		<div id="frmgetsocio" class="formulariogeneral">
+			<h:messages globalOnly="true" layout="table" infoClass="advertencia"></h:messages>
+			<div>&#160;</div>
+			<h:form id="frmigetsocioiniciales" prependId="false">
+				<fieldset>
+					<legend>Búsqueda del Paciente</legend>
+					<h:panelGrid id="pg" columns="2" border="0">
+						<h:outputText value="Iniciales:"></h:outputText>
+						<h:inputText id="iniciales"
+							value="#{backingBusquedaPaciente.inicialesBuscarPaciente}">
+							<f:ajax event="keyup"
+								listener="#{backingBusquedaPaciente.pacientesPorNombreAjax}"
+								render=" pgnohaysocioscoincidentes resultadoBusqueda" />
+						</h:inputText>
+						<h:outputText value=""></h:outputText>
+					</h:panelGrid>
+				</fieldset>
+				<div>&#160;</div>
+				<h:panelGroup id="pgnohaysocioscoincidentes" layout="block"
+					styleClass="nohayregistroscoincidentes">
+					<h:outputText id="outnohayregistroscoincidentes"
+						value="Ningún socio coincidente con el patrón solicitado"
+						rendered="#{backingBusquedaPaciente.listadoPacientes!=null and backingBusquedaPaciente.totalPacientesCandidatos==0}" />
+				</h:panelGroup>
+				<h:panelGroup id="resultadoBusqueda" layout="block" class="izq">
+					<h:dataTable id="tablapaciente" name="tablasocio" var="paciente"
+						value="#{backingBusquedaPaciente.listadoPacientes}" border="1"
+						headerClass="list-header" rowClasses="filaimpar,filapar"
+						columnClasses="just-derecha,just-centro,just-centro"
+						styleClass="tablacentrada"
+						rendered="#{backingBusquedaPaciente.totalPacientesCandidatos>0}">
+						<f:facet name="header">
+							<h:outputText value="Registros coincidentes"></h:outputText>
+						</f:facet>
+						
+						<h:column id="Dni" headerClass="list-header">
+							<f:facet name="header" class="fondo">
+								<h:outputText value="Dni" ></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.dni}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Nombre" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Nombre"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.nombre}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Edad" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Edad"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.edad}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Telefono" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Telefono"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.telefono}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Telefono2" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Telefono2"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.telefono2}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Localidad" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Localidad"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.localidad}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Provincia" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Provincia"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.provincia}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="comunidad" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Comunidad"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.comunidadAutonoma}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="patologias" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Patologias"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.patalogiaPrevia}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="positivo" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Positivo"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.pcr.positivo}" ></h:outputText>
+						</h:column>
+						
+						<h:column id="Editar" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Editar" ></h:outputText>
+							</f:facet>
+							<h:commandLink action="#{backingBusquedaPaciente.editarSocio}"
+								value="Editar" class="roj">
+								<f:setPropertyActionListener
+									target="#{backingEditarSocio.socioseleccionado}"
+									value="#{socio}">
+								</f:setPropertyActionListener>
+							</h:commandLink>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Editar v2" ></h:outputText>
+							</f:facet>
+								<h:link value="Editar v2" outcome="editarsocio">
+									<f:param name="idsocio" value="#{socio.idsocio}" />
+									<f:param name="pagina" value="/admin/getsocio.xhtml" />
+								</h:link>
+						</h:column>
+					</h:dataTable>
+				</h:panelGroup>
+			</h:form>
+		</div>
+		<div>&#160;</div>
+	</ui:define>
+</ui:composition>
+</html>

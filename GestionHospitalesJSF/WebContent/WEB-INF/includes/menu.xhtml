@@ -20,24 +20,29 @@
                      value="Listado Pacientes"></h:commandLink></li>
                      
                <li><h:commandLink 
-               		 action="/pacientespositivos.xhtml"
+               		 action="/listadopositivos.xhtml"
                      value="Pacientes Positivos"></h:commandLink></li>
                      
                <li><h:commandLink
-                     action="/pacientesnegativos.xhtml?faces-redirect=true"
+                     action="/listadonegativos.xhtml?faces-redirect=true"
                      value="Pacientes Negativos"></h:commandLink></li>
+                     
+               <li><h:commandLink
+                     action="/buscarpaciente.xhtml?faces-redirect=true"
+                     value="Buscar pacientes"></h:commandLink></li>
+                     
             </ul>
          </li>
          <li><a href="#" class="MenuBarItemSubmenu">Ingresos</a>
          <ul>
                 <li><h:commandLink 
-                	 action="listadopacientes.xhtml?faces-redirect=true"
+                	 action="listadoingresos.xhtml?faces-redirect=true"
                      value="Listado Ingresados"></h:commandLink></li>
-              <!--      
+                   
                <li><h:commandLink 
-               		 action="/pacientespositivos.xhtml"
+               		 action="/buscaringresado.xhtml"
                      value="Pacientes Positivos"></h:commandLink></li>
-                     
+                <!--      
                <li><h:commandLink
                      action="/pacientesnegativos.xhtml?faces-redirect=true"
                      value="Pacientes Negativos"></h:commandLink></li>
@@ -47,33 +52,33 @@
          <li><a href="#" class="MenuBarItemSubmenu">Altas</a>
          <ul>
                 <li><h:commandLink 
-                	 action="listadopacientes.xhtml?faces-redirect=true"
+                	 action="listadoaltas.xhtml?faces-redirect=true"
                      value="Listado Altas"></h:commandLink></li>
-               <!--      
+                     
                <li><h:commandLink 
-               		 action="/pacientespositivos.xhtml"
-                     value="Pacientes Positivos"></h:commandLink></li>
+               		 action="/daralta.xhtml"
+                     value="Dar de Alta"></h:commandLink></li>
                      
                <li><h:commandLink
-                     action="/pacientesnegativos.xhtml?faces-redirect=true"
-                     value="Pacientes Negativos"></h:commandLink></li>
-               -->
+                     action="/buscaralta.xhtml?faces-redirect=true"
+                     value="Buscar Paciente Alta"></h:commandLink></li>
+               
             </ul>
          </li>
          <li><a href="#" class="MenuBarItemSubmenu">Defunciones</a>
          <ul>
                 <li><h:commandLink 
-                	 action="listadopacientes.xhtml?faces-redirect=true"
+                	 action="listadodefunciones.xhtml?faces-redirect=true"
                      value="Listado Defunciones"></h:commandLink></li>
-               <!--      
+                    
                <li><h:commandLink 
-               		 action="/pacientespositivos.xhtml"
-                     value="Pacientes Positivos"></h:commandLink></li>
-                     
+               		 action="/dardefuncion.xhtml"
+                     value="Defuncion"></h:commandLink></li>
+                   
                <li><h:commandLink
-                     action="/pacientesnegativos.xhtml?faces-redirect=true"
-                     value="Pacientes Negativos"></h:commandLink></li>
-               -->
+                     action="/buscardefuncion.xhtml?faces-redirect=true"
+                     value="Buscar Paciente fallecido"></h:commandLink></li>
+               
             </ul>
          </li>
       </ul>

@@ -2,15 +2,19 @@ package servicios;
 
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import entidades.Ingreso;
 import entidades.Paciente;
 import entidades.Pcr;
+import entidades.Alta;
+import entidades.Defuncion;
 
 
 @Stateless
@@ -63,7 +67,7 @@ public class PacienteService {
     	
     	//if(p.getPositivo() == "SI" || p.getPositivo() == "si" || p.getPositivo() == "Si" || p.getPositivo() == "sI" || p.getPositivo() == "NO" || p.getPositivo() == "No" || p.getPositivo() == "nO" || p.getPositivo() == "no") {
 
-    	if(positivo.compareToIgnoreCase("si")==0) {
+    	if(positivo.compareToIgnoreCase("si")==0 || positivo.compareToIgnoreCase("no")==0 ) {
     		pcr.setPositivo(p.getPositivo().toUpperCase());
     		em.persist(pcr);
     		System.out.println("PCR CREADO");
@@ -93,6 +97,45 @@ public class PacienteService {
 		
 	}
     
+    @SuppressWarnings("unchecked")
+	public List<Paciente> pacientesEnRango(int primerResultado, int maxResultados) {
+		Query consulta=em.createQuery("select p from Paciente p");
+    	consulta.setFirstResult(primerResultado);
+    	consulta.setMaxResults(maxResultados);
+    	List<Paciente>listaPacientes= consulta.getResultList();
+		
+		  for(Paciente a:listaPacientes){ em.refresh(a); }
+		 
+		return listaPacientes;
+	}
     
+    @SuppressWarnings("unchecked")
+	public List<Paciente> pacientesListado() {
+		Query consulta=em.createQuery("select p from Paciente p");
+    	List<Paciente>listaPacientes= consulta.getResultList();
+		
+		  for(Paciente a:listaPacientes){ em.refresh(a); }
+		 
+		return listaPacientes;
+	}
+	
+	public long getTotal() {
+		Query consulta = em.createQuery("select count(p) from Paciente p");
+		return (Long) consulta.getSingleResult();
+	}
+	
+	public void refrescar(Long paciente) {
+		em.refresh(paciente);
+	}
+    
+	@SuppressWarnings("unchecked")
+	public List<Paciente> pacientesPorNombre(String paciente) {
+		Query consulta = em.createNamedQuery("Paciente.pacientesPorNombre");
+		List<Paciente> listaPacientes = consulta.setParameter("nombrepaciente", "%" + paciente + "%").getResultList();
+		for (Paciente s : listaPacientes) {
+			em.refresh(s);
+		}
+		return listaPacientes;
+	}
 
 }

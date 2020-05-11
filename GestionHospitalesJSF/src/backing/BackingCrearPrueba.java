@@ -81,10 +81,13 @@ public class BackingCrearPrueba implements Serializable {
 			pcr.setPaciente(dni);
 			pacienteservice.crearPcr(pcr);
 			
-			//if(pIngreso == "SI" || pIngreso == "si" || pIngreso == "Si" || pIngreso == "sI") {
-				ingreso.setPaciente(dni);
-				pacienteservice.crearIngreso(ingreso);
-	    	//}
+			if(pIngreso.equals("si") || pIngreso.equals("Si") || pIngreso.equals("SI") || pIngreso.equals("sI")) {
+				System.out.println("Entro en ingreso1");
+				if(pcr.getPositivo().equals("si") || pcr.getPositivo().equals("Si") || pcr.getPositivo().equals("SI") || pcr.getPositivo().equals("sI")) {
+					ingreso.setPaciente(dni);
+					pacienteservice.crearIngreso(ingreso);
+		    	}
+	    	}
 			
 			
 			FacesContext context = FacesContext.getCurrentInstance();
