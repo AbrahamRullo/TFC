@@ -1,6 +1,7 @@
 package servicios;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -136,6 +137,33 @@ public class PacienteService {
 			em.refresh(s);
 		}
 		return listaPacientes;
+	}
+	
+	public Alta crearAlta(String a)  {
+    	Alta alta= new Alta();
+    	Ingreso i =em.find(Ingreso.class, a);
+    	System.out.println(i.getPaciente());
+    	System.out.println(i.getEstado());
+    	
+    		Date fechaInicial= (Date) i.getFechaIngreso();
+    		Date actual = new Date(Calendar.getInstance().getTime().getTime());
+     
+    		Long dias=(Long) ((actual.getTime()-fechaInicial.getTime())/86400000);
+     
+    	
+    	
+    	if(i!=null) {
+    		alta.setPaciente(a);
+    		alta.setIngreso(i);
+    		alta.setDiasHospitalizado(dias+1);
+    		em.persist(alta);
+    	}
+    	
+    	
+    	
+		return alta;
+		
+		
 	}
 
 }

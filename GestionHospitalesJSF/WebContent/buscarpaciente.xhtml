@@ -111,28 +111,6 @@
 							<h:outputText value="#{paciente.pcr.positivo}" ></h:outputText>
 						</h:column>
 						
-						<h:column id="Editar" headerClass="list-header">
-							<f:facet name="header">
-								<h:outputText value="Editar" ></h:outputText>
-							</f:facet>
-							<h:commandLink action="#{backingBusquedaPaciente.editarSocio}"
-								value="Editar" class="roj">
-								<f:setPropertyActionListener
-									target="#{backingEditarSocio.socioseleccionado}"
-									value="#{socio}">
-								</f:setPropertyActionListener>
-							</h:commandLink>
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Editar v2" ></h:outputText>
-							</f:facet>
-								<h:link value="Editar v2" outcome="editarsocio">
-									<f:param name="idsocio" value="#{socio.idsocio}" />
-									<f:param name="pagina" value="/admin/getsocio.xhtml" />
-								</h:link>
-						</h:column>
 					</h:dataTable>
 				</h:panelGroup>
 			</h:form>

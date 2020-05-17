@@ -18,7 +18,7 @@ public class Alta implements Serializable {
 	private String paciente;
 
 	@Column(name="DIAS_HOSPITALIZADO")
-	private BigDecimal diasHospitalizado;
+	private Long diasHospitalizado;
 
 	//bi-directional one-to-one association to Ingreso
 	@OneToOne
@@ -36,11 +36,11 @@ public class Alta implements Serializable {
 		this.paciente = paciente;
 	}
 
-	public BigDecimal getDiasHospitalizado() {
+	public Long getDiasHospitalizado() {
 		return this.diasHospitalizado;
 	}
 
-	public void setDiasHospitalizado(BigDecimal diasHospitalizado) {
+	public void setDiasHospitalizado(Long diasHospitalizado) {
 		this.diasHospitalizado = diasHospitalizado;
 	}
 

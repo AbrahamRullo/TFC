@@ -121,15 +121,14 @@
 						<h:outputText value="#{paciente.patalogiaPrevia}"></h:outputText>
 					</h:column>
 					
-					<h:column id="Eliminar" headerClass="list-header">
-						<f:facet name="header">
-							<h:outputText value="Eliminar"></h:outputText>
-						</f:facet>
-						<h:commandLink value="Eliminar">
-							<f:ajax render="panelTab @form"
-							listener="#{backingListadoAutor.autoraborrar(autor)}" />
-						</h:commandLink>
+					<h:column id="positivo" headerClass="list-header">
+							<f:facet name="header">
+								<h:outputText value="Positivo"></h:outputText>
+							</f:facet>
+							<h:outputText value="#{paciente.pcr.positivo}" ></h:outputText>
 					</h:column>
+					
+					
 				</h:dataTable>
 				<div>
 					<h:outputText id="pagactual"
